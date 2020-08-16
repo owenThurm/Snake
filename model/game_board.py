@@ -8,7 +8,7 @@ class game_board:
 
     def __init__(self):
         self.snake = snake()
-        self.treat_location = [7, 15]
+        self.treat_location = [15, 7]
         self.update_board()
 
     def update_board(self):
@@ -18,7 +18,7 @@ class game_board:
             for j in range(20):
                 if(self.snake.is_snake_tile([j, i])):
                     row.append(game_tile.SNAKE)
-                elif(self.treat_location[0] == i and self.treat_location[1] == j):
+                elif(self.treat_location[0] == j and self.treat_location[1] == i):
                     row.append(game_tile.TREAT)
                 else:
                     row.append(game_tile.EMPTY)
@@ -35,24 +35,41 @@ class game_board:
             self.treat_location = [random.randrange(0, 20, 1), random.randrange(0, 15, 1)]
 
     def move_snake(self):
-        if(self.snake_about_to_get_treat):
+        if(self.snake_about_to_get_treat()):
             self.snake.grow()
         else:
             self.snake.move()
+        self.update_board()
 
     def snake_about_to_get_treat(self):
         head = self.snake.get_head_position()
-        if(self.snake.get_orientation == orientation.NORTH and self.treat_location == [head[0], head[1] + 1]):
+        if(self.snake.get_orientation() == orientation.NORTH and self.treat_location == [head[0], head[1] + 1]):
             return True
-        elif(self.snake.get_orientation == orientation.EAST and self.treat_location == [head[0] + 1, head[1]]):
+        elif(self.snake.get_orientation() == orientation.EAST and self.treat_location == [head[0] + 1, head[1]]):
             return True
-        elif(self.snake.get_orientation == orientation.SOUTH and self.treat_location == [head[0], head[1] - 1]):
+        elif(self.snake.get_orientation() == orientation.SOUTH and self.treat_location == [head[0], head[1] - 1]):
             return True
-        elif(self.snake.get_orientation == orientation.WEST and self.treat_location == [head[0] - 1, head[1]]):
+        elif(self.snake.get_orientation() == orientation.WEST and self.treat_location == [head[0] - 1, head[1]]):
             return True
         else:
             return False
 
 if __name__ == "__main__":
     snake_game = game_board()
-    snake_game.game_state()            
+    snake_game.game_state()
+    snake_game.move_snake()
+    snake_game.game_state()
+    snake_game.move_snake()
+    snake_game.game_state()
+    snake_game.move_snake()
+    snake_game.game_state()
+    snake_game.move_snake()
+    snake_game.game_state()
+    snake_game.move_snake()
+    snake_game.game_state()
+    snake_game.move_snake()
+    snake_game.game_state()
+    snake_game.move_snake()
+    snake_game.game_state()
+    snake_game.move_snake()
+    snake_game.game_state()
