@@ -7,6 +7,7 @@ from orientation import orientation
 class game_board:
 
     def __init__(self):
+        self.game_over = False
         self.snake = snake()
         self.treat_location = [15, 7]
         self.update_board()
@@ -35,11 +36,26 @@ class game_board:
             self.treat_location = [random.randrange(0, 20, 1), random.randrange(0, 15, 1)]
 
     def move_snake(self):
+        if(self.snake_off_board()):
+            self.end_game()
         if(self.snake_about_to_get_treat()):
             self.snake.grow()
+            self.spawn_treat()
         else:
             self.snake.move()
         self.update_board()
+
+    def snake_off_board(self):
+        head = self.snake.get_head_position()
+        if(head[0] >= 20 or head[1] >= 15):
+            return True
+        return False
+
+    def snake_eating_self(self):
+        return not(len(self.snake.get_snake_positions()) == len(set(self.snake.get_snake_positions())))  
+
+    def end_game(self):
+        self.game_over = True
 
     def snake_about_to_get_treat(self):
         head = self.snake.get_head_position()

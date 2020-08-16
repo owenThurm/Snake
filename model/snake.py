@@ -4,7 +4,6 @@ class snake:
 
     def __init__(self):
         self.size = 3
-        self.alive = True
         self.direction = orientation.EAST
         self.positions = [[5, 7], [6, 7], [7, 7]]
 
@@ -25,8 +24,8 @@ class snake:
     def get_head_position(self):
         return self.positions[-1]
 
-    def kill_snake(self):
-        self.alive = False
+    def get_snake_positions(self):
+        return self.positions
     
     def update_head(self):
         print('was called')
