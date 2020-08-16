@@ -57,6 +57,9 @@ class game_board:
     def end_game(self):
         self.game_over = True
 
+    def is_game_over(self):
+        return self.game_over
+
     def snake_about_to_get_treat(self):
         head = self.snake.get_head_position()
         if(self.snake.get_orientation() == orientation.NORTH and self.treat_location == [head[0], head[1] + 1]):
