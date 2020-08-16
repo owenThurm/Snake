@@ -3,9 +3,9 @@ from orientation import orientation
 class snake:
 
     def __init__(self):
-        self.size = 3
-        self.direction = orientation.EAST
-        self.positions = [[5, 7], [6, 7], [7, 7]]
+        __self.size = 3
+        __self.direction = orientation.EAST
+        __self.positions = [[5, 7], [6, 7], [7, 7]]
 
     def grow(self):
         self.size += 1
@@ -27,7 +27,7 @@ class snake:
     def get_snake_positions(self):
         return self.positions
     
-    def update_head(self):
+    def __update_head(self):
         print('was called')
         head = self.positions[-1]
         if(self.direction == orientation.NORTH):
