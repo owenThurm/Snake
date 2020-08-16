@@ -15,20 +15,29 @@ class snake:
     def set_orientation(self, orientation):
         self.direction = orientation
                
+    def get_orientation(self):
+        return self.direction
+
     def move(self):
         del self.positions[0]
         self.update_head()
+
+    def get_head_position(self):
+        return self.positions[-1]
+
+    def kill_snake(self):
+        self.alive = False
     
     def update_head(self):
         print('was called')
         head = self.positions[-1]
         if(self.direction == orientation.NORTH):
             self.positions.append([head[0], head[1] + 1])
-        if(self.direction == orientation.EAST):
+        elif(self.direction == orientation.EAST):
             self.positions.append([head[0] + 1, head[1]])
-        if(self.direction == orientation.SOUTH):
+        elif(self.direction == orientation.SOUTH):
             self.positions.append([head[0], head[1] - 1])
-        if(self.direction == orientation.WEST):
+        elif(self.direction == orientation.WEST):
             self.positions.append([head[0] - 1, head[1]])
 
     def is_snake_tile(self, tile_position):
