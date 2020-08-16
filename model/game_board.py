@@ -44,9 +44,7 @@ class game_board:
             self.end_game()
         elif(self.__snake_about_to_get_treat()):
             self.__snake.grow()
-            print('got here')
             self.spawn_treat()
-            print('got here')
         else:
             self.__snake.move()
         self.__update_board()
