@@ -7,17 +7,17 @@ from orientation import orientation
 class game_board:
 
     def __init__(self):
-        __self.game_over = False
-        __self.snake = snake()
-        __self.treat_location = [15, 7]
-        self.update_board()
+        self.__game_over = False
+        self.__snake = snake()
+        self.__treat_location = [15, 7]
+        self.__update_board()
 
     def __update_board(self):
         self.board = []
         for i in range(15):
             row = []
             for j in range(20):
-                if(self.snake.is_snake_tile([j, i])):
+                if(self.__snake.is_snake_tile([j, i])):
                     row.append(game_tile.SNAKE)
                 elif(self.treat_location[0] == j and self.treat_location[1] == i):
                     row.append(game_tile.TREAT)
@@ -25,34 +25,34 @@ class game_board:
                     row.append(game_tile.EMPTY)
             self.board.append(row)
 
-    def __game_state(self):
+    def game_state(self):
         for row in self.board:
             for tile in row:
                 print(tile.value, end="")
             print()          
 
     def spawn_treat(self):
-        while(self.snake.is_snake_tile(self.treat_location)):
+        while(self.__snake.is_snake_tile(self.__treat_location)):
             self.treat_location = [random.randrange(0, 20, 1), random.randrange(0, 15, 1)]
 
     def move_snake(self):
-        if(self.snake_off_board()):
+        if(self.__snake_off_board()):
             self.end_game()
-        elif(self.snake_about_to_get_treat()):
-            self.snake.grow()
+        elif(self.__snake_about_to_get_treat()):
+            self.__snake.grow()
             self.spawn_treat()
         else:
-            self.snake.move()
-        self.update_board()
+            self.__snake.move()
+        self.__update_board()
 
     def __snake_off_board(self):
-        head = self.snake.get_head_position()
+        head = self.__snake.get_head_position()
         if(head[0] >= 20 or head[1] >= 15):
             return True
         return False
 
     def __snake_eating_self(self):
-        return not(len(self.snake.get_snake_positions()) == len(set(self.snake.get_snake_positions())))  
+        return not(len(self.__snake.get_snake_positions()) == len(set(self.__snake.get_snake_positions())))  
 
     def end_game(self):
         self.game_over = True
@@ -61,14 +61,14 @@ class game_board:
         return self.game_over
 
     def __snake_about_to_get_treat(self):
-        head = self.snake.get_head_position()
-        if(self.snake.get_orientation() == orientation.NORTH and self.treat_location == [head[0], head[1] + 1]):
+        head = self.__snake.get_head_position()
+        if(self.__snake.get_orientation() == orientation.NORTH and self.treat_location == [head[0], head[1] + 1]):
             return True
-        elif(self.snake.get_orientation() == orientation.EAST and self.treat_location == [head[0] + 1, head[1]]):
+        elif(self.__snake.get_orientation() == orientation.EAST and self.treat_location == [head[0] + 1, head[1]]):
             return True
-        elif(self.snake.get_orientation() == orientation.SOUTH and self.treat_location == [head[0], head[1] - 1]):
+        elif(self.__snake.get_orientation() == orientation.SOUTH and self.treat_location == [head[0], head[1] - 1]):
             return True
-        elif(self.snake.get_orientation() == orientation.WEST and self.treat_location == [head[0] - 1, head[1]]):
+        elif(self.__snake.get_orientation() == orientation.WEST and self.treat_location == [head[0] - 1, head[1]]):
             return True
         else:
             return False
