@@ -14,7 +14,7 @@ class game_board:
         self.__update_board()
 
     def get_board(self):
-        return tuple(self.__board)
+        return tuple(tuple(row) for row in self.__board)
 
     def set_snake_orientation(self, orientation):
         self.__snake.set_orientation(orientation)
@@ -43,7 +43,7 @@ class game_board:
             self.__treat_location = [random.randrange(0, 50, 1), random.randrange(0, 30, 1)]
 
     def move_snake(self):
-        if(self.__snake_off_board()):
+        if(self.__snake_off_board() or self.__snake_eating_self()):
             self.end_game()
         elif(self.__snake_about_to_get_treat()):
             self.__snake.grow()
@@ -53,9 +53,9 @@ class game_board:
         self.__update_board()
 
     def __snake_off_board(self):
-        head = self.__snake.get_head_position()
+        """head = self.__snake.get_head_position()
         if(head[0] >= 50 or head[1] >= 30 or head[0] < 0 or head[1] < 0):
-            return True
+            return True"""
         return False
 
     def __snake_eating_self(self):

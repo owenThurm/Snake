@@ -29,7 +29,7 @@ class snake:
         return self.__positions[-1]
 
     def get_snake_positions(self):
-        return self.__positions
+        return tuple(tuple(row) for row in self.__positions)
     
     def __update_head(self):
         head = self.__positions[-1]

@@ -45,6 +45,7 @@ class snake_controller:
                 self.view.draw_board()
                 pygame.display.update()
                 self.model.move_snake()
+        pygame.quit()
         
 
 

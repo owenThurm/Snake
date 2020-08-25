@@ -30,7 +30,7 @@ class snake_view:
                     pygame.draw.rect(self.__win, (0, 255, 0), (25*j, 25*i, 25, 25))
                 if(tile == game_tile.game_tile.TREAT):
                     pygame.draw.rect(self.__win, (0, 0, 255), (25*j, 25*i, 25, 25))
-        sleep(.05)        
+        sleep(.04)        
         print("finished loop")
 
     def display_end_game(self):
