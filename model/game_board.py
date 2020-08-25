@@ -16,6 +16,9 @@ class game_board:
     def get_board(self):
         return tuple(self.__board)
 
+    def set_snake_orientation(self, orientation):
+        self.__snake.set_orientation(orientation)
+
     def __update_board(self):
         self.__board = []
         for i in range(15):
@@ -66,13 +69,13 @@ class game_board:
 
     def __snake_about_to_get_treat(self):
         head = self.__snake.get_head_position()
-        if(self.__snake.get_orientation() == orientation.NORTH and self.__treat_location == [head[0], head[1] + 1]):
+        if(self.__snake.get_orientation() == orientation.orientation.NORTH and self.__treat_location == [head[0], head[1] + 1]):
             return True
-        elif(self.__snake.get_orientation() == orientation.EAST and self.__treat_location == [head[0] + 1, head[1]]):
+        elif(self.__snake.get_orientation() == orientation.orientation.EAST and self.__treat_location == [head[0] + 1, head[1]]):
             return True
-        elif(self.__snake.get_orientation() == orientation.SOUTH and self.__treat_location == [head[0], head[1] - 1]):
+        elif(self.__snake.get_orientation() == orientation.orientation.SOUTH and self.__treat_location == [head[0], head[1] - 1]):
             return True
-        elif(self.__snake.get_orientation() == orientation.WEST and self.__treat_location == [head[0] - 1, head[1]]):
+        elif(self.__snake.get_orientation() == orientation.orientation.WEST and self.__treat_location == [head[0] - 1, head[1]]):
             return True
         else:
             return False
