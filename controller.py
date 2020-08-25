@@ -42,6 +42,7 @@ class snake_controller:
                     self.model.set_snake_orientation(orientation.orientation.SOUTH)
             
             self.view.draw_board()
+            pygame.display.update()
             self.model.move_snake()
         pygame.quit()
 

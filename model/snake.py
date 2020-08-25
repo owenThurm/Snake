@@ -30,11 +30,11 @@ class snake:
     def __update_head(self):
         head = self.__positions[-1]
         if(self.__direction == orientation.orientation.NORTH):
-            self.__positions.append([head[0], head[1] + 1])
+            self.__positions.append([head[0], head[1] - 1])
         elif(self.__direction == orientation.orientation.EAST):
             self.__positions.append([head[0] + 1, head[1]])
         elif(self.__direction == orientation.orientation.SOUTH):
-            self.__positions.append([head[0], head[1] - 1])
+            self.__positions.append([head[0], head[1] + 1])
         elif(self.__direction == orientation.orientation.WEST):
             self.__positions.append([head[0] - 1, head[1]])
 
