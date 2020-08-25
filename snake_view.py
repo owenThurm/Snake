@@ -22,14 +22,15 @@ class snake_view:
         board = self.__model.get_board()
         for i, row in zip(range(0, len(board)), board):
             for j, tile in zip(range(0, len(row)), row):
-                print(i)
-                print(j)
                 if(tile == game_tile.game_tile.EMPTY):
                     pygame.draw.rect(self.__win, (0, 0, 0), (25*j, 25*i, 25, 25))
                 if(tile == game_tile.game_tile.SNAKE):
                     pygame.draw.rect(self.__win, (0, 255, 0), (25*j, 25*i, 25, 25))
                 if(tile == game_tile.game_tile.TREAT):
-                    pygame.draw.rect(self.__win, (0, 0, 255), (25*j, 25*i, 25, 25))
+                    pygame.draw.ellipse(self.__win, (0, 0, 255), (25*j, 25*i, 25, 25))
+        text = self.font.render('Score: ' + str(self.__model.get_score()), True, (255, 255, 255), (0, 0, 0))
+        text_rect = text.get_rect()
+        self.__win.blit(text, text_rect)
         sleep(.04)        
         print("finished loop")
 

@@ -12,6 +12,10 @@ class game_board:
         self.__treat_location = [15, 7]
         self.__board = []
         self.__update_board()
+        self.__score = 0
+
+    def get_score(self):
+        return self.__score
 
     def get_board(self):
         return tuple(tuple(row) for row in self.__board)
@@ -47,6 +51,7 @@ class game_board:
             self.end_game()
         elif(self.__snake_about_to_get_treat()):
             self.__snake.grow()
+            self.__score += 1
             self.spawn_treat()
         else:
             self.__snake.move()
