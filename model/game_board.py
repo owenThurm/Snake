@@ -1,14 +1,14 @@
 import random
 import math
-from game_tile import game_tile
-from snake import snake
-from orientation import orientation
+from model import game_tile
+from model import snake
+from model import orientation
 
 class game_board:
 
     def __init__(self):
         self.__game_over = False
-        self.__snake = snake()
+        self.__snake = snake.snake()
         self.__treat_location = [15, 7]
         self.__board = []
         self.__update_board()
@@ -22,11 +22,11 @@ class game_board:
             row = []
             for j in range(20):
                 if(self.__snake.is_snake_tile([j, i])):
-                    row.append(game_tile.SNAKE)
+                    row.append(game_tile.game_tile.SNAKE)
                 elif(self.__treat_location[0] == j and self.__treat_location[1] == i):
-                    row.append(game_tile.TREAT)
+                    row.append(game_tile.game_tile.TREAT)
                 else:
-                    row.append(game_tile.EMPTY)
+                    row.append(game_tile.game_tile.EMPTY)
             self.__board.append(row)
 
     def game_state(self):

@@ -1,10 +1,10 @@
-from orientation import orientation
+from model import orientation
 
 class snake:
 
     def __init__(self):
         self.__size = 3
-        self.__direction = orientation.EAST
+        self.__direction = orientation.orientation.EAST
         self.__positions = [[5, 7], [6, 7], [7, 7]]
 
     def grow(self):
