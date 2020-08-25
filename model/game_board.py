@@ -53,9 +53,9 @@ class game_board:
         self.__update_board()
 
     def __snake_off_board(self):
-        """head = self.__snake.get_head_position()
+        head = self.__snake.get_head_position()
         if(head[0] >= 50 or head[1] >= 30 or head[0] < 0 or head[1] < 0):
-            return True"""
+            return True
         return False
 
     def __snake_eating_self(self):

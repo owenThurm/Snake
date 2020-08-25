@@ -25,7 +25,7 @@ class snake_view:
                 print(i)
                 print(j)
                 if(tile == game_tile.game_tile.EMPTY):
-                    pygame.draw.rect(self.__win, (255, 0, 0), (25*j, 25*i, 25, 25))
+                    pygame.draw.rect(self.__win, (0, 0, 0), (25*j, 25*i, 25, 25))
                 if(tile == game_tile.game_tile.SNAKE):
                     pygame.draw.rect(self.__win, (0, 255, 0), (25*j, 25*i, 25, 25))
                 if(tile == game_tile.game_tile.TREAT):
@@ -34,8 +34,9 @@ class snake_view:
         print("finished loop")
 
     def display_end_game(self):
-        text = self.font.render('Game Over!', True, (0, 0, 0), (255, 255, 255))
+        text = self.font.render('Game Over!', True, (255, 255, 255), (0, 0, 0))
         text_rect = text.get_rect()
+        text_rect.center = (1250//2, 750//2)
         self.__win.blit(text, text_rect)
         pygame.display.update()
 
