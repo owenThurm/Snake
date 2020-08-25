@@ -28,7 +28,6 @@ class snake:
         return self.__positions
     
     def __update_head(self):
-        print('was called')
         head = self.__positions[-1]
         if(self.__direction == orientation.NORTH):
             self.__positions.append([head[0], head[1] + 1])
