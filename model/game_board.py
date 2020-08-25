@@ -21,9 +21,9 @@ class game_board:
 
     def __update_board(self):
         self.__board = []
-        for i in range(15):
+        for i in range(30):
             row = []
-            for j in range(20):
+            for j in range(50):
                 if(self.__snake.is_snake_tile([j, i])):
                     row.append(game_tile.game_tile.SNAKE)
                 elif(self.__treat_location[0] == j and self.__treat_location[1] == i):
@@ -40,7 +40,7 @@ class game_board:
 
     def spawn_treat(self):
         while(self.__snake.is_snake_tile(self.__treat_location)):
-            self.__treat_location = [random.randrange(0, 20, 1), random.randrange(0, 15, 1)]
+            self.__treat_location = [random.randrange(0, 50, 1), random.randrange(0, 30, 1)]
 
     def move_snake(self):
         if(self.__snake_off_board()):
@@ -54,7 +54,7 @@ class game_board:
 
     def __snake_off_board(self):
         head = self.__snake.get_head_position()
-        if(head[0] >= 20 or head[1] >= 15 or head[0] < 0 or head[1] < 0):
+        if(head[0] >= 50 or head[1] >= 30 or head[0] < 0 or head[1] < 0):
             return True
         return False
 

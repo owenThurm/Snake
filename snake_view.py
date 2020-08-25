@@ -12,8 +12,8 @@ class snake_view:
     """A view for a snake game. Takes in a read-only model"""
 
     def __init__(self, model):
-        self.__WINDOW_WIDTH = 1000
-        self.__WINDOW_HEIGHT = 700
+        self.__WINDOW_WIDTH = 1250
+        self.__WINDOW_HEIGHT = 750
         self.__win = pygame.display.set_mode((self.__WINDOW_WIDTH, self.__WINDOW_HEIGHT))
         self.__model = model
         self.font = pygame.font.Font('/Users/othurm/desktop/snake/Montserrat.otf', 32) 
@@ -30,7 +30,7 @@ class snake_view:
                     pygame.draw.rect(self.__win, (0, 255, 0), (25*j, 25*i, 25, 25))
                 if(tile == game_tile.game_tile.TREAT):
                     pygame.draw.rect(self.__win, (0, 0, 255), (25*j, 25*i, 25, 25))
-                sleep(.0002)
+        sleep(.05)        
         print("finished loop")
 
     def display_end_game(self):
