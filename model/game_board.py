@@ -54,7 +54,7 @@ class game_board:
 
     def __snake_off_board(self):
         head = self.__snake.get_head_position()
-        if(head[0] >= 20 or head[1] >= 15):
+        if(head[0] >= 20 or head[1] >= 15 or head[0] < 0 or head[1] < 0):
             return True
         return False
 
@@ -62,10 +62,10 @@ class game_board:
         return not(len(self.__snake.get_snake_positions()) == len(set(self.__snake.get_snake_positions())))  
 
     def end_game(self):
-        self.game_over = True
+        self.__game_over = True
 
     def is_game_over(self):
-        return self.game_over
+        return self.__game_over
 
     def __snake_about_to_get_treat(self):
         head = self.__snake.get_head_position()

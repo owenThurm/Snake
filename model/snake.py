@@ -11,8 +11,12 @@ class snake:
         self.__size += 1
         self.__update_head()
 
-    def set_orientation(self, orientation):
-        self.__direction = orientation
+    def set_orientation(self, snake_orientation):
+        if not self.__opposite_directions(snake_orientation):    
+            self.__direction = snake_orientation
+
+    def __opposite_directions(self, snake_orientation):
+        return (snake_orientation == orientation.orientation.NORTH and self.__direction == orientation.orientation.SOUTH) or (snake_orientation == orientation.orientation.SOUTH and self.__direction == orientation.orientation.NORTH) or (snake_orientation == orientation.orientation.EAST and self.__direction == orientation.orientation.WEST) or (snake_orientation == orientation.orientation.WEST and self.__direction == orientation.orientation.EAST)
                
     def get_orientation(self):
         return self.__direction

@@ -16,6 +16,7 @@ class snake_view:
         self.__WINDOW_HEIGHT = 700
         self.__win = pygame.display.set_mode((self.__WINDOW_WIDTH, self.__WINDOW_HEIGHT))
         self.__model = model
+        self.font = pygame.font.Font('/Users/othurm/desktop/snake/Montserrat.otf', 32) 
 
     def draw_board(self):
         board = self.__model.get_board()
@@ -31,6 +32,12 @@ class snake_view:
                     pygame.draw.rect(self.__win, (0, 0, 255), (25*j, 25*i, 25, 25))
                 sleep(.0002)
         print("finished loop")
+
+    def display_end_game(self):
+        text = self.font.render('Game Over!', True, (0, 0, 0), (255, 255, 255))
+        text_rect = text.get_rect()
+        self.__win.blit(text, text_rect)
+        pygame.display.update()
 
 if __name__ == '__main__':
     view = snake_view(game_board.game_board())

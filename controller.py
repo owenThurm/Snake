@@ -25,7 +25,6 @@ class snake_controller:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     game_continues = False
-                
                 keys = pygame.key.get_pressed()
 
                 if keys[pygame.K_UP]:
@@ -40,11 +39,13 @@ class snake_controller:
                 if keys[pygame.K_DOWN]:
                     print('DOWN!')
                     self.model.set_snake_orientation(orientation.orientation.SOUTH)
-            
-            self.view.draw_board()
-            pygame.display.update()
-            self.model.move_snake()
-        pygame.quit()
+            if self.model.is_game_over():
+                self.view.display_end_game()
+            else:
+                self.view.draw_board()
+                pygame.display.update()
+                self.model.move_snake()
+        
 
 
 if __name__ == '__main__':
